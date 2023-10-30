@@ -1,0 +1,31 @@
+html,
+body {
+        padding: 0;
+        margin: 0;
+        outline: none;
+        font-size: .9rem;
+        color: white;
+        font-weight: bold;
+}
+
+header {
+        background: blue;
+        width: 100vw;
+        height: fit-content;
+        position: float;
+        top: 0;
+        left: 0;
+        padding: 1.7rem;
+}
+
+.ipl-container {
+        padding: 2rem;
+        background: red;
+        min-height: 90vh;
+}
+
+footer {
+        background: yellow;
+        padding: .9rem;
+        width: 100vw;
+}
