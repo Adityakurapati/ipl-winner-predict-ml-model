@@ -3,14 +3,16 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import pickle
 import pandas as pd
+from django.views.decorators.csrf import csrf_protect
 
 def index(request):
         return render(request,'index.html')
         # return HttpResponse('Hello')
         
-        
+
+@csrf_protect
 def result(request):
-        
+        print("Done")
         # Collecting Data from Post Request 
         batting_team = request.POST['batting_team']
         bowling_team = request.POST['bowling_team']
