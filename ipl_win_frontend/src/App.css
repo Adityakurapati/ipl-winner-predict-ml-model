@@ -1,31 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@600&family=Playpen+Sans:wght@200&family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+        font-family: 'Gabarito', sans-serif;
+        font-size: 1.2rem;
+}
+
 html,
 body {
-        padding: 0;
-        margin: 0;
         outline: none;
         font-size: .9rem;
-        color: white;
+        width: 100vw;
+        height: 100vh;
+        color: #333;
         font-weight: bold;
+        background: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-bg.jpg');
+        background: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-bg-2.png');
+        background-size: cover;
+        background: linear-gradient(135deg, #0a0808, #0a0808, #1d0e3f);
+        background-attachment: fixed;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+}
+
+.ball {
+        z-index: 1;
+        width: 40rem;
+        height: 40rem;
+        background-size: 100% 100%;
+        object-fit: cover;
+        position: absolute;
+        bottom: -40%;
+        right: -40%;
+        background-image: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ball-ipl-4.png');
+
+
+        filter: drop-shadow(0 0 3rem rgb(113, 56, 184));
+        background-repeat: no-repeat;
+        animation-name: enter;
+        animation-fill-mode: forwards;
+        animation-duration: .9s;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-out;
+}
+
+.rounded-blur {
+        width: 40rem;
+        height: 40rem;
+
+        border-radius: 50%;
+        position: absolute;
+        bottom: -40%;
+        right: -40%;
+        background-repeat: no-repeat;
+        filter: blur(6rem);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        animation-name: enter;
+        animation-fill-mode: forwards;
+        animation-duration: .7s;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-out;
 }
 
 header {
-        background: blue;
         width: 100vw;
-        height: fit-content;
-        position: float;
-        top: 0;
-        left: 0;
-        padding: 1.7rem;
+        margin-top: 4rem;
+        padding: 2rem 2rem;
+}
+
+header center b {
+        font-size: 2rem !important;
+        font-weight: 700;
+        letter-spacing: 2px;
 }
 
 .ipl-container {
         padding: 2rem;
-        background: red;
-        min-height: 90vh;
+        min-height: 70vh;
+}
+
+.ipl-row {
+        display: grid;
+        width: 60vw;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2rem;
+        margin: 0 auto;
+}
+
+.teams-hidden-container {
+        display: none !important;
+}
+
+.team-container-names {
+        display: grid;
+        grid-template-columns: repeat(5, 15vw);
+        place-items: center;
+        position: absolute;
+        max-height: 40vh;
+        overflow-Y: scroll;
+        top: 42vh;
+        left: 5vw;
+        z-index: 10;
+        margin: auto auto;
+        /* background: white; */
+        background: #0f0e17;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        /* backdrop-filter: blur(8.5px); */
+        /* -webkit-backdrop-filter: blur(8.5px); */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        width: fit-content;
+        border-radius: .9rem;
+        padding: 1.4rem;
+        gap: 2vw;
+        animation: slide-from-left .4s ease-in;
+
+}
+
+@keyframes slide-from-left {
+        0% {
+                width: 0;
+        }
+
+        25% {
+                width: 25%;
+        }
+
+        50% {
+                width: 50%;
+        }
+
+        75% {
+                width: 75%;
+        }
+
+        100% {
+                width: initial;
+        }
+}
+
+.team-field {
+        padding: 2%;
+        border-radius: 2rem;
+        /* background: rgb(170, 170, 182); */
+        background: #303038;
+        min-width: 80%;
+        max-height: 8rem;
+        height: 8rem;
+        cursor: pointer;
+        border: 1px solid transparent;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.team-field:hover {
+        box-shadow: 1rem 1rem 2.2rem .7rem rgba(0, 0, 0, 0.725);
+        border-color: rgba(35, 35, 35, 0.897);
+}
+
+.ipl-input-field {
+        padding: .9rem 1.2rem;
+        background: rgb(99, 34, 34);
+        border: 0px;
+        border-radius: 4rem;
+        color: white;
+        font-weight: bolder;
+        background: url('https://i0.wp.com/www.activestate.com/wp-content/uploads/2023/05/footerBG.png?fit=2731%2C1823&ssl=1');
+        /* background: rgb(158, 67, 67); */
+        background-size: cover;
+        object-fit: cover;
+}
+
+.ipl-input-field:nth-child(1) {
+        grid-column: 1/4;
+}
+
+.ipl-input-field:nth-child(2) {
+        grid-column: 4/7;
+}
+
+.ipl-input-field:nth-child(3),
+.ipl-input-field:nth-child(4) {
+        grid-column: 1/7;
+}
+
+.ipl-input-field:nth-child(5) {
+        grid-column: 1/3;
+}
+
+.ipl-input-field:nth-child(6) {
+        grid-column: 3/5;
+}
+
+.ipl-input-field:nth-child(7) {
+        grid-column: 5/7;
+}
+
+.ipl-input-field:hover,
+.ipl-input-field:active {
+        border-color: rgb(50, 19, 135);
+}
+
+.ipl-submit-btn {
+        margin: 2rem 10rem;
+}
+
+input[type="submit"] {
+        background: white;
+        padding: .8rem 1.2rem;
+        border-radius: 1.8rem;
+        border: 1px solid transparent;
+}
+
+input[type="submit"]:hover {
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        background: linear-gradient(45deg, rgba(63, 94, 251, 1), rgba(252, 70, 107, 1));
+        box-shadow: 0 0 3rem .4rem rgb(128, 71, 233);
+        /* box-shadow: 0 0 1.3rem .4rem rgba(252, 70, 107, 1); */
 }
 
 footer {
-        background: yellow;
         padding: .9rem;
         width: 100vw;
+        font-size: 38rem !important;
+        font-weight: bolder;
+}
+
+@keyframes enter {
+        0% {
+                bottom: -40%;
+                right: -40%;
+        }
+
+        100% {
+                bottom: -25%;
+                right: -18%;
+        }
+}
+
+/* Glow Text  */
+@import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
+
+h1 {
+        font-size: 1.6rem;
+        /* text-shadow: 0 0 5px #f6f3ed, 0 0 15px #c9c4ba, 0 0 20px #efede8, 0 0 40px #c4c1ba, 0 0 60px #f3ecec, 0 0 10px #cdcac6, 0 0 98px #fcfafa; */
+        color: #5f5f5f;
+        font-family: "Nunito", cursive;
+        font-weight: bolder;
+        text-align: center;
+        letter-spacing: 3px;
+        text-wrap: wrap;
+        /* animation: blink 12s infinite; */
+        /* -webkit-animation: blink 12s infinite; */
+}
+
+
+@-webkit-keyframes blink {
+
+        20%,
+        24%,
+        55% {
+                color: #111;
+                text-shadow: none;
+        }
+
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+                /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+                text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+                color: #fff6a9;
+        }
+}
+
+@keyframes blink {
+
+        20%,
+        24%,
+        55% {
+                color: #111;
+                text-shadow: none;
+        }
+
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+                /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+                text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+                color: #fff6a9;
+        }
+}
+
+
+/* Scroller */
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+        width: 26px;
+        border-radius: 13px;
+        background-clip: padding-box;
+        border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 0 10px;
 }

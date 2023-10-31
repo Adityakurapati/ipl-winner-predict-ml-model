@@ -1,18 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-// import Header from './components/Header';
-
-import Header from './components/Header';
+import './Result.css';
 import Content from './components/Content';
-import Footer from './components/Footer';
+import Layout from './components/Layout';
+import Result from './components/Result';
+import { Routes, Route } from 'react-router-dom';
+
 function App ()
 {
         return (
-                <div className="App">
-                        <Header />
-                        <Content />
-                        <Footer />
-                </div>
+                // <Content />
+                <Routes>
+                        <Route path="/" element={ <Layout /> }>
+                                <Route index element={ <Content /> } />
+                                <Route path="/result" element={ <Result /> } />
+                        </Route>
+                        {/* <Route path="/" element={ <Content /> } />
+                        <Route path="/result" element={ <Result /> } /> */}
+                </Routes>
         );
 }
 

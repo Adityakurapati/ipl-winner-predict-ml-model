@@ -1,0 +1,8 @@
+.result-container{
+        height:100vh;
+        width:100vw;
+        background:url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-win-bg.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+        object-fit:cover;
+}
