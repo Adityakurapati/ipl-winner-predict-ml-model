@@ -1,25 +1,25 @@
 import Options from './Options';
-import { useStoreState, useStoreActions } from 'easy-peasy';
-
+import { useContext } from 'react';
+import { DataContext } from '../Context/DataContext'
 const Row=() =>
 {
         // Store Actions
-        const { showOptions }=useStoreState( state => state.showOptions );
-        const { city }=useStoreState( state => state.city );
-        const { cities }=useStoreState( state => state.cities );
-        const { target }=useStoreState( state => state.target );
-        const { score }=useStoreState( state => state.score );
-        const { wickets }=useStoreState( state => state.wickets );
-        const { overs }=useStoreState( state => state.overs );
-        const { teams }=useStoreState( state => state.teams );
+        const { showOptions }=useContext( DataContext );
+        const { city }=useContext( DataContext );
+        const { cities }=useContext( DataContext );
+        const { target }=useContext( DataContext );
+        const { score }=useContext( DataContext );
+        const { wickets }=useContext( DataContext );
+        const { overs }=useContext( DataContext );
+        const { teams }=useContext( DataContext );
 
         // Store Actions 
-        const { setShowOptions }=useStoreActions( action => action.setShowOptions );
-        const { setCity }=useStoreActions( action => action.setCity );
-        const { setTarget }=useStoreActions( action => action.setTarget );
-        const { setScore }=useStoreActions( action => action.setScore );
-        const { setOvers }=useStoreActions( action => action.setOvers );
-        const { setWickets }=useStoreActions( action => action.setWickets );
+        const { setShowOptions }=useContext( DataContext );
+        const { setCity }=useContext( DataContext );
+        const { setTarget }=useContext( DataContext );
+        const { setScore }=useContext( DataContext );
+        const { setOvers }=useContext( DataContext );
+        const { setWickets }=useContext( DataContext );
 
         return (
                 <div >

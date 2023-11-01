@@ -1,12 +1,12 @@
-import { useStoreState, useStoreActions } from 'easy-peasy';
-
+import { useContext } from 'react';
+import DataContext from '../Context/DataContext';
 const Options=( { options, showOptions, setShowOptions } ) =>
 {
         // Store States
         // Store Actions 
-        const { teams }=useStoreState( state => state.teams );
-        const { setBattingTeam }=useStoreActions( action => action.setBattingTeam );
-        const { setBowlingTeam }=useStoreActions( action => action.setBowlingTeam );
+        const { teams }=useContext( DataContext );
+        const { setBattingTeam }=useContext( DataContext );
+        const { setBowlingTeam }=useContext( DataContext );
         const handleClick=( e, team ) =>
         {
                 setBattingTeam( team );
