@@ -1,26 +1,33 @@
 import Options from './Options';
-import { useContext } from 'react';
-import { DataContext } from '../Context/DataContext'
-const Row=() =>
+import { useState } from 'react';
+// import DataContext from '../Context/DataContext';
+const Row=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam } ) =>
 {
-        // Store Actions
-        const { showOptions }=useContext( DataContext );
-        const { city }=useContext( DataContext );
-        const { cities }=useContext( DataContext );
-        const { target }=useContext( DataContext );
-        const { score }=useContext( DataContext );
-        const { wickets }=useContext( DataContext );
-        const { overs }=useContext( DataContext );
-        const { teams }=useContext( DataContext );
+        const [ showOptions, setShowOptions ]=useState( false );
+        const [ target, setTarget ]=useState( '' );
+        const [ score, setScore ]=useState( '' );
+        const [ wickets, setWickets ]=useState( '' );
+        const [ overs, setOvers ]=useState( '' );
+        const [ city, setCity ]=useState( '' );
 
-        // Store Actions 
-        const { setShowOptions }=useContext( DataContext );
-        const { setCity }=useContext( DataContext );
-        const { setTarget }=useContext( DataContext );
-        const { setScore }=useContext( DataContext );
-        const { setOvers }=useContext( DataContext );
-        const { setWickets }=useContext( DataContext );
-
+        const teams=[
+                "Mumbai Indians",
+                "Sunrisers Hyderabad",
+                "Chennai Super Kings",
+                "Royal Challengers Bangalore",
+                "Kolkata Knight Riders",
+                "Sunrisers Hyderabad",
+                "Delhi Capitals",
+                "Kings XI Punjab",
+                "Rajasthan Royals"
+        ];
+        const cities=[
+                'Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
+                'Chandigarh', 'Jaipur', 'Cape Town', 'Durban', 'Port Elizabeth',
+                'Centurion', 'East London', 'Johannesburg', 'Kimberley', 'Bloemfontein',
+                'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamsala', 'Chennai', 'Visakhapatnam',
+                'Pune', 'Raipur', 'Ranchi', 'Abu Dhabi', 'Sharjah', 'Mohali', 'Bengaluru'
+        ];
         return (
                 <div >
                         <div className="ipl-row">
@@ -78,16 +85,28 @@ const Row=() =>
                                 showOptions={ showOptions }
                                 setShowOptions={ setShowOptions }
                                 options={ teams }
+                                battingTeam={ battingTeam }
+                                setBattingTeam={ setBattingTeam }
+                                bowlingTeam={ bowlingTeam }
+                                setBowlingTeam={ setBowlingTeam }
                         />
                         <Options
                                 showOptions={ showOptions }
                                 setShowOptions={ setShowOptions }
                                 options={ teams }
+                                battingTeam={ battingTeam }
+                                setBattingTeam={ setBattingTeam }
+                                bowlingTeam={ bowlingTeam }
+                                setBowlingTeam={ setBowlingTeam }
                         />
                         <Options
                                 showOptions={ showOptions }
                                 setShowOptions={ setShowOptions }
                                 options={ cities }
+                                battingTeam={ battingTeam }
+                                setBattingTeam={ setBattingTeam }
+                                bowlingTeam={ bowlingTeam }
+                                setBowlingTeam={ setBowlingTeam }
                         />
                 </div>
         );

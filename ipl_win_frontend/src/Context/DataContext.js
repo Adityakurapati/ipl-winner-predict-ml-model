@@ -1,8 +1,17 @@
-import React, { createContext, useState } from 'react';
-const DataContext=createContext( {} ); // Create a context with an initial empty object.
+import { createContext } from 'react';
+
+// BuiltIn Hooks
+import { useState } from 'react';
+// import api from '../api/posts';
+
+//Custom Hooks
+// import useAxiosFetch from '../hooks/useAxiosFetch';
+
+const DataContext=createContext( {} );
 
 export const DataProvider=( { children } ) =>
 {
+
         const [ battingTeam, setBattingTeam ]=useState( '' );
         const [ bowlingTeam, setBowlingTeam ]=useState( '' );
         const [ showOptions, setShowOptions ]=useState( false );
@@ -11,7 +20,7 @@ export const DataProvider=( { children } ) =>
         const [ score, setScore ]=useState( '' );
         const [ wickets, setWickets ]=useState( '' );
         const [ overs, setOvers ]=useState( '' );
-        const [ teams, setTeams ]=useState( [
+        const teams=[
                 "Mumbai Indians",
                 "Sunrisers Hyderabad",
                 "Chennai Super Kings",
@@ -21,32 +30,33 @@ export const DataProvider=( { children } ) =>
                 "Delhi Capitals",
                 "Kings XI Punjab",
                 "Rajasthan Royals"
-        ] );
-        const [ cities, setCities ]=useState( [
+        ];
+        const cities=[
                 'Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
                 'Chandigarh', 'Jaipur', 'Cape Town', 'Durban', 'Port Elizabeth',
                 'Centurion', 'East London', 'Johannesburg', 'Kimberley', 'Bloemfontein',
                 'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamsala', 'Chennai', 'Visakhapatnam',
                 'Pune', 'Raipur', 'Ranchi', 'Abu Dhabi', 'Sharjah', 'Mohali', 'Bengaluru'
-        ] );
+        ];
+        const [ mycities, setMYCity ]=useState( teams )
+        // const { data, fetchError, isLoading }=useAxiosFetch( "localhost:3500/posts" );
 
-        // Pass the state variables you want to share through the context
-        const contextValue={
-                battingTeam, setBattingTeam,
+
+        // Pass All Values to Provider Instead of Drillling Them Down As Props 
+        return <DataContext.Provider value={ {
+                battingTeam: battingTeam, setBattingTeam,
                 bowlingTeam, setBowlingTeam,
-                showOptions, setShowOptions,
-                city, setCity,
+                showOptions: showOptions, setShowOptions: setShowOptions,
+                city, setCity: setCity,
                 target, setTarget,
                 score, setScore,
                 wickets, setWickets,
                 overs, setOvers,
-                teams, setTeams,
-                cities, setCities,
-        };
-        return <DataContext values={ { contextValues } } >
-                { childen }
-        </DataContext>
+                teams: teams,
+                cities
+                , mycities
+        } }>
+                { children }
+        </DataContext.Provider>
 }
-
-
 export default DataContext;
