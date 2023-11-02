@@ -11,8 +11,21 @@ import Result from './components/Result';
 function App ()
 {
 
-        const [ battingTeam, setBattingTeam ]=useState( '' );
-        const [ bowlingTeam, setBowlingTeam ]=useState( '' );
+        // Home Page States
+        const [ battingTeam, setBattingTeam ]=useState( 'Select Batting Team' );
+        const [ bowlingTeam, setBowlingTeam ]=useState( 'Select Bowling Team' );
+        const [ showOptions, setShowOptions ]=useState( false );
+        const [ target, setTarget ]=useState( '' );
+        const [ score, setScore ]=useState( '' );
+        const [ wickets, setWickets ]=useState( '' );
+        const [ overs, setOvers ]=useState( '' );
+        const [ city, setCity ]=useState( 'Select Venue City' );
+
+        // Result States
+        const [ result, setResult ]=useState( '' );
+        const [ wonTeam, setwonTeam ]=useState();
+
+        const data_object={ battingTeam, bowlingTeam, showOptions, target, score, wickets, overs, city, setBattingTeam, setBowlingTeam, setShowOptions, setTarget, setScore, setWickets, setOvers, setCity }
         return (
                 <Routes>
                         <Route path="/" element={ <Layout /> }>
@@ -22,6 +35,18 @@ function App ()
                                                 setBattingTeam={ setBattingTeam }
                                                 bowlingTeam={ bowlingTeam }
                                                 setBowlingTeam={ setBowlingTeam }
+                                                showOptions={ showOptions }
+                                                setShowOptions={ setShowOptions }
+                                                target={ target }
+                                                setTarget={ setTarget }
+                                                score={ score }
+                                                setScore={ setScore }
+                                                wickets={ wickets }
+                                                setWickets={ setWickets }
+                                                overs={ overs }
+                                                setOvers={ setOvers }
+                                                city={ city }
+                                                setCity={ setCity }
                                         /> } />
                                 <Route path="/result" element={ <Result /> } />
                         </Route>

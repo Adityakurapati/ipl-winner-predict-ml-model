@@ -1,15 +1,9 @@
 import Options from './Options';
-import { useState } from 'react';
-// import DataContext from '../Context/DataContext';
-const Row=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam } ) =>
-{
-        const [ showOptions, setShowOptions ]=useState( false );
-        const [ target, setTarget ]=useState( '' );
-        const [ score, setScore ]=useState( '' );
-        const [ wickets, setWickets ]=useState( '' );
-        const [ overs, setOvers ]=useState( '' );
-        const [ city, setCity ]=useState( '' );
+import { useState, useContext } from 'react';
+import DataContext from '../Context/DataContext';
 
+const Row=( { battingTeam, bowlingTeam, showOptions, target, score, wickets, overs, city, setBattingTeam, setBowlingTeam, setShowOptions, setTarget, setScore, setWickets, setOvers, setCity } ) =>
+{
         const teams=[
                 "Mumbai Indians",
                 "Sunrisers Hyderabad",
@@ -28,26 +22,49 @@ const Row=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam } ) =>
                 'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamsala', 'Chennai', 'Visakhapatnam',
                 'Pune', 'Raipur', 'Ranchi', 'Abu Dhabi', 'Sharjah', 'Mohali', 'Bengaluru'
         ];
+        const [ forComponent, setForComponent ]=useState( '' );
+        const [ options, setOptions ]=useState( teams );
+
+
+        const handleOptions=( component ) =>
+        {
+                setShowOptions( !showOptions )
+                if ( component=='batting' )
+                {
+                        setOptions( teams );
+                        setForComponent( component )
+                }
+                if ( component=='bowling' )
+                {
+                        setOptions( teams );
+                        setForComponent( component );
+                }
+                if ( component=='city' )
+                {
+                        setOptions( cities );
+                        setForComponent( component );
+                }
+        }
         return (
                 <div >
                         <div className="ipl-row">
                                 <input
                                         type="button"
-                                        onClick={ () => setShowOptions( !showOptions ) }
+                                        onClick={ () => handleOptions( 'batting' ) }
                                         className="ipl-input-field"
-                                        value="Select Batting Team"
+                                        value={battingTeam}
                                 />
                                 <input
                                         type="button"
-                                        onClick={ () => setShowOptions( !showOptions ) }
+                                        onClick={ () => handleOptions( 'bowling' ) }
                                         className="ipl-input-field"
-                                        value="Select Bowling Team"
+                                        value={bowlingTeam}
                                 />
                                 <input
                                         type="button"
-                                        onClick={ () => setShowOptions( !showOptions ) }
+                                        onClick={ () => handleOptions( 'city' ) }
                                         className="ipl-input-field"
-                                        value="Select City"
+                                        value={city}
                                 />
                                 <input
                                         type="text"
@@ -84,29 +101,11 @@ const Row=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam } ) =>
                         <Options
                                 showOptions={ showOptions }
                                 setShowOptions={ setShowOptions }
-                                options={ teams }
-                                battingTeam={ battingTeam }
+                                options={ options }
                                 setBattingTeam={ setBattingTeam }
-                                bowlingTeam={ bowlingTeam }
                                 setBowlingTeam={ setBowlingTeam }
-                        />
-                        <Options
-                                showOptions={ showOptions }
-                                setShowOptions={ setShowOptions }
-                                options={ teams }
-                                battingTeam={ battingTeam }
-                                setBattingTeam={ setBattingTeam }
-                                bowlingTeam={ bowlingTeam }
-                                setBowlingTeam={ setBowlingTeam }
-                        />
-                        <Options
-                                showOptions={ showOptions }
-                                setShowOptions={ setShowOptions }
-                                options={ cities }
-                                battingTeam={ battingTeam }
-                                setBattingTeam={ setBattingTeam }
-                                bowlingTeam={ bowlingTeam }
-                                setBowlingTeam={ setBowlingTeam }
+                                setCity={ setCity }
+                                forcomponent={ forComponent }
                         />
                 </div>
         );

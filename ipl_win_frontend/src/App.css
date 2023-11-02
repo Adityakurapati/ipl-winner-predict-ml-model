@@ -18,7 +18,8 @@ body {
         background: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-bg-2.png');
         background-size: cover;
         background: linear-gradient(135deg, #0a0808, #0a0808, #1d0e3f);
-        background-attachment: fixed;
+        background-attachment: fixed !important;
+        overflow: none;
         display: flex !important;
         justify-content: center;
         align-items: center;
@@ -85,7 +86,7 @@ header center b {
         width: 60vw;
         grid-template-columns: repeat(6, 1fr);
         gap: 2rem;
-        margin: 0 auto;
+        margin: 3rem auto;
 }
 
 .teams-hidden-container {
@@ -204,7 +205,7 @@ header center b {
 }
 
 .ipl-submit-btn {
-        margin: 2rem 10rem;
+        margin: 4rem 22rem;
 }
 
 input[type="submit"] {
@@ -225,9 +226,15 @@ input[type="submit"]:hover {
 
 footer {
         padding: .9rem;
+        position: absolute;
+        bottom: .8rem;
         width: 100vw;
-        font-size: 38rem !important;
+}
+
+footer * {
+        font-size: 1.2rem !important;
         font-weight: bolder;
+        color: white;
 }
 
 @keyframes enter {
@@ -257,6 +264,7 @@ h1 {
         /* animation: blink 12s infinite; */
         /* -webkit-animation: blink 12s infinite; */
 }
+
 
 
 @-webkit-keyframes blink {

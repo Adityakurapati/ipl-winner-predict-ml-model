@@ -1,11 +1,21 @@
 import { useContext } from 'react';
 import DataContext from '../Context/DataContext';
-const Options=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam, showOptions, setShowOptions, options } ) =>
+const Options=( { forcomponent, setBattingTeam, setBowlingTeam, showOptions, setShowOptions, options, setCity } ) =>
 {
-        // Store States
-        const handleClick=( e, team ) =>
+        const handleClick=( e, option ) =>
         {
-                setBattingTeam( team );
+                if ( forcomponent=='batting' )
+                {
+                        setBattingTeam( option );
+                }
+                if ( forcomponent=='bowling' )
+                {
+                        setBowlingTeam( option );
+                }
+                if ( forcomponent=='city' )
+                {
+                        setCity( option );
+                }
                 setShowOptions( !showOptions );
         };
 
@@ -22,8 +32,12 @@ const Options=( { battingTeam, bowlingTeam, setBattingTeam, setBowlingTeam, show
         ];
 
         return (
-                <div className={ showOptions? "teams-container team-container-names":"teams-container teams-hidden-container" }>
-                        { options }
+                <div className={ showOptions? "teams-container team-container-names":"teams-container teams-hidden-container" } style={ { zIndex: 10 } }>
+                        { options.map( ( option, index ) => (
+                                <span key={ index } className="team-field" onClick={ ( e ) => handleClick( e, option ) } >
+                                        <h1>{ option }</h1>
+                                </span>
+                        ) ) }
                 </div>
         );
 };

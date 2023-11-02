@@ -14,14 +14,16 @@ def index(request):
 def result(request):
         print("Done")
         # Collecting Data from Post Request 
-        batting_team = request.POST['batting_team']
-        bowling_team = request.POST['bowling_team']
-        selected_city = request.POST['venue']
-        target = request.POST['target']
-        score = request.POST['score']
-        wickets = request.POST['wickets']
-        overs = request.POST['overs']
-        target = request.POST['target']
+        print(request.POST)
+        batting_team = request.POST.get('battingTeam')
+        bowling_team = request.POST.get('bowlingTeam')
+        # bowling_team = request.POST['bowlingTeam']
+        selected_city = request.POST.get('venue')
+        target = request.POST.get('target')
+        score = request.POST.get('score')
+        wickets = request.POST.get('wickets')
+        overs = request.POST.get('overs')
+        target = request.POST.get('target')
         
         # Loading Pipe And Passing Input values To Pipe Model
         pipe = pickle.load(open('pipe.pkl', 'rb'))
@@ -38,8 +40,8 @@ def result(request):
                 'balls_left': [balls_left],
                 'wickets_left': [wickets_left],
                 'total_runs_x': [score],
-                'crr': [crr],
-                'rrr': [rrr],
+                'crr': crr ,#[crr],
+                'rrr': rrr,#[rrr],
                 'result': [0]
         })
 
@@ -50,4 +52,4 @@ def result(request):
         # st.header('Batting : ' + str(round(win * 100)) + "%")
         # st.header("Bowling : " + str(round(loss * 100)) + "%")      
         # return render(request,'index.html')
-        return render('Result')
+        return render(request, 'ipl_winner_predictor/my_template.html')

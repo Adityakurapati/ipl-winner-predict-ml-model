@@ -1,8 +1,107 @@
-.result-container{
-        height:100vh;
-        width:100vw;
-        background:url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-win-bg.jpg');
-        background-size:cover;
-        background-repeat:no-repeat;
-        object-fit:cover;
+.result-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: fit-content;
+        background-image: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\result-bg2.avif');
+        background-size: 100% 100%;
+        object-fit: cover;
+        z-index: 1;
+        animation: grow-blow 2s ease;
+        animation-fill-mode: forwards;
+}
+
+@keyframes grow-blow {
+        0% {
+                height: 0vh;
+        }
+
+        100% {
+                height: 100vh;
+        }
+}
+
+
+header {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        z-index: 5;
+        color: white;
+}
+
+footer {
+        z-index: 10;
+        left: 0%;
+}
+
+
+.team1,
+.team2 {
+        position: absolute;
+        border-radius: 50%;
+        bottom: 9rem;
+        background: yellow;
+        z-index: 10;
+        width: 7rem;
+        height: 7rem;
+        animation-name: color-palate;
+        animation-iteration-count: infinite;
+        animation-duration: .8s;
+        animation-timing-function: ease;
+        animation-direction: alternate;
+}
+
+.team1 {
+        left: 29rem;
+        background: url('https://imgs.search.brave.com/XZgv3gYbyEzoRdggH7ogZ8HZc2Na94agcp1BvmaqT6M/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5naXRlbS5jb20v/cGltZ3MvbS83LTc1/NDg0X3RyYW5zcGFy/ZW50LWNzay1sb2dv/LXBuZy1jaGVubmFp/LXN1cGVyLWtpbmdz/LXBuZy5wbmc');
+        background-size: 100% 100%;
+        object-fit: cover;
+}
+
+.team2 {
+        right: 29rem;
+        background: green;
+        animation-delay: .8s;
+        background: url('https://imgs.search.brave.com/nFoUxjoSyajZnnAgMKU1w54TJ0-bBS2KivOL1__pdog/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nam95LmNvbS9w/bmdtLzI2OS81MTU0/NzE2X211bWJhaS1p/bmRpYW5zLWxvZ28t/bXVtYmFpLWluZGlh/bnMtcG5nLWRvd25s/b2FkLnBuZw');
+        background-size: cover;
+        object-fit: cover;
+}
+
+.team_focus {
+        filter: drop-shadow(0 0 3rem rgb(113, 56, 184));
+}
+
+@keyframes color-palate {
+        from {
+                transform: scale(1.2);
+                filter: saturation(100%) drop-shadow(0 0 3rem rgb(113, 56, 184));
+                box-shadow: 0 0 3rem 1rem rgba(225, 222, 222, 0.56);
+
+        }
+
+        to {
+
+                filter: grayscale(100%) blur(2px);
+                transform: scale(1);
+        }
+}
+
+.button-wrapper canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+}
+
+.result-text {
+        position: absolute;
+        top: 38vh;
+        left: 42vw;
+        color: white;
+        font-size: 1.6rem;
+        background: blue;
+        width: 16%;
 }

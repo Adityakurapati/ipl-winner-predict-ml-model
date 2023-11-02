@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { StoreProvider } from 'easy-peasy';
+// import { StoreProvider } from 'easy-peasy';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import store from './store';
 import Content from './components/Content';
@@ -12,7 +12,7 @@ root.render(
                 {/* <App /> */ }
                 <Router>
                         <Routes>
-                                <Route path='/' element={ <Content /> } />
+                                <Route path='/*' element={ <App /> } />
                         </Routes>
                 </Router>
                 {/* </StoreProvider> */ }
