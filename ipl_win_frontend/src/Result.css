@@ -44,8 +44,8 @@ footer {
         bottom: 9rem;
         background: yellow;
         z-index: 10;
-        width: 7rem;
-        height: 7rem;
+        width: 11rem;
+        height: 11rem;
         animation-name: color-palate;
         animation-iteration-count: infinite;
         animation-duration: .8s;
@@ -55,8 +55,8 @@ footer {
 
 .team1 {
         left: 29rem;
-        background: url('https://imgs.search.brave.com/XZgv3gYbyEzoRdggH7ogZ8HZc2Na94agcp1BvmaqT6M/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5naXRlbS5jb20v/cGltZ3MvbS83LTc1/NDg0X3RyYW5zcGFy/ZW50LWNzay1sb2dv/LXBuZy1jaGVubmFp/LXN1cGVyLWtpbmdz/LXBuZy5wbmc');
-        background-size: 100% 100%;
+        background: url('../../images/Mumbai_Indians.jpg');
+        background-size: 90% 90%;
         object-fit: cover;
 }
 
@@ -64,9 +64,9 @@ footer {
         right: 29rem;
         background: green;
         animation-delay: .8s;
-        background: url('https://imgs.search.brave.com/nFoUxjoSyajZnnAgMKU1w54TJ0-bBS2KivOL1__pdog/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nam95LmNvbS9w/bmdtLzI2OS81MTU0/NzE2X211bWJhaS1p/bmRpYW5zLWxvZ28t/bXVtYmFpLWluZGlh/bnMtcG5nLWRvd25s/b2FkLnBuZw');
+        background: url('../../images/Sunrisers_Hyderabad.jpg');
         background-size: cover;
-        object-fit: cover;
+        object-fit: contain;
 }
 
 .team_focus {
@@ -104,4 +104,31 @@ footer {
         font-size: 1.6rem;
         background: blue;
         width: 16%;
+}
+
+.probab1,
+.probab2 {
+        position: absolute;
+        top: 88%;
+        color: #1d1a21;
+        font-size: 1.6rem;
+}
+
+.probab1 {
+        left: 30%;
+}
+
+.probab2 {
+        right: 30%;
+}
+
+
+.stuck {
+        animation: none !important;
+        transform: scale(1.1);
+}
+
+.blur {
+        animation: none !important;
+        filter: blur(2px) !important;
 }

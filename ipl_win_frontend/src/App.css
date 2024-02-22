@@ -14,10 +14,8 @@ body {
         height: 100vh;
         color: #333;
         font-weight: bold;
-        background: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-bg.jpg');
-        background: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ipl-bg-2.png');
         background-size: cover;
-        background: linear-gradient(135deg, #0a0808, #0a0808, #1d0e3f);
+        background: linear-gradient(135deg, #4516a3, #08080a, #1d0e3f);
         background-attachment: fixed !important;
         overflow: none;
         display: flex !important;
@@ -35,15 +33,32 @@ body {
         bottom: -40%;
         right: -40%;
         background-image: url('D:\MY USERS\Aditya\ENGINEERING\EXTRA\IPL\ipl_match_pred\ipl_winner_predictor\images\ball-ipl-4.png');
-
-
         filter: drop-shadow(0 0 3rem rgb(113, 56, 184));
         background-repeat: no-repeat;
-        animation-name: enter;
-        animation-fill-mode: forwards;
-        animation-duration: .9s;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-out;
+        animation: rotateEnter 0.9s ease-out forwards, rotateBall 5s infinite linear;
+        /* Combining enter animation and rotating ball animation */
+}
+
+@keyframes rotateEnter {
+        0% {
+                bottom: -40%;
+                right: -40%;
+        }
+
+        100% {
+                bottom: -25%;
+                right: -18%;
+        }
+}
+
+@keyframes rotateBall {
+        0% {
+                transform: rotate(0deg);
+        }
+
+        100% {
+                transform: rotate(360deg);
+        }
 }
 
 .rounded-blur {
@@ -168,10 +183,12 @@ header center b {
         border-radius: 4rem;
         color: white;
         font-weight: bolder;
-        background: url('https://i0.wp.com/www.activestate.com/wp-content/uploads/2023/05/footerBG.png?fit=2731%2C1823&ssl=1');
+        /* background: url('https://i0.wp.com/www.activestate.com/wp-content/uploads/2023/05/footerBG.png?fit=2731%2C1823&ssl=1'); */
         /* background: rgb(158, 67, 67); */
+        background: rgb(15, 14, 14);
         background-size: cover;
         object-fit: cover;
+        border: 1px solid white;
 }
 
 .ipl-input-field:nth-child(1) {

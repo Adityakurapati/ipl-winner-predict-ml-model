@@ -10,7 +10,6 @@ const Row=( { battingTeam, bowlingTeam, showOptions, target, score, wickets, ove
                 "Chennai Super Kings",
                 "Royal Challengers Bangalore",
                 "Kolkata Knight Riders",
-                "Sunrisers Hyderabad",
                 "Delhi Capitals",
                 "Kings XI Punjab",
                 "Rajasthan Royals"
