@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 import pickle
 import pandas as pd
 from django.views.decorators.csrf import csrf_protect
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def index(request):
         return render(request,'index.html')
@@ -11,22 +15,17 @@ def index(request):
         
 
 @csrf_protect
-def result(request):
-        print("Done")
-        # Collecting Data from Post Request 
-        print(request.POST)
-        batting_team = request.POST.get('battingTeam')
-        bowling_team = request.POST.get('bowlingTeam')
-        # bowling_team = request.POST['bowlingTeam']
-        selected_city = request.POST.get('venue')
-        target = request.POST.get('target')
-        score = request.POST.get('score')
-        wickets = request.POST.get('wickets')
-        overs = request.POST.get('overs')
-        target = request.POST.get('target')
+def resultPredict(request):
+        batting_team = request.GET.get('battingTeam')
+        bowling_team = request.GET.get('bowlingTeam')
+        target = int(request.GET.get('target'))
+        score = int(request.GET.get('score'))
+        wickets = int(request.GET.get('wickets'))
+        overs = int(request.GET.get('overs'))
+        selected_city = request.GET.get('city')
         
         # Loading Pipe And Passing Input values To Pipe Model
-        pipe = pickle.load(open('pipe.pkl', 'rb'))
+        pipe = pickle.load(open((os.path.join(BASE_DIR,'ipl_winner_predictor/pipe.pkl')), 'rb'))
         runs_left = target - score
         balls_left = 120 - (overs * 6)
         wickets_left = 10 - wickets
@@ -46,10 +45,14 @@ def result(request):
         })
 
         result = pipe.predict_proba(input_df)
-        win = result[0][1]
-        loss = result[0][0]
+        win = (result[0][1])*100
+        loss = (result[0][0])*100
+        print(f'Win : { round(win)} %   And   Loss : { round(loss)} %')
+        return JsonResponse({'win':win,'loss':loss})
 
-        # st.header('Batting : ' + str(round(win * 100)) + "%")
-        # st.header("Bowling : " + str(round(loss * 100)) + "%")      
-        # return render(request,'index.html')
-        return render(request, 'ipl_winner_predictor/my_template.html')
+def result(request):
+        result=request.GET.get('result')
+        win=request.GET.get('win')
+        loss=request.GET.get('loss')
+        wonTeamNo=request.GET.get('wonTeamNo')
+        return render(request, 'index.html',{'result':result,'win':win,'loss':loss,'wonTeamNo':wonTeamNo})
